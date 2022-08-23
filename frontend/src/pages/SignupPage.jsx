@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Error from "../components/Error";
-import Login from "../components/Login/Login";
+import Signup from "../components/Signup/Signup";
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     if (password.length < 3) {
       return setError("Password must be at least 3 characters.");
+    }
+    if (password !== passwordConfirm) {
+      return setError("Passwords do not match.");
     }
     e.preventDefault();
     try {
@@ -23,20 +27,25 @@ const LoginPage = () => {
     if (password.length > 3) {
       return setError("");
     }
-  }, [password]);
+    if (password === passwordConfirm) {
+      return setError("");
+    }
+  }, [password, passwordConfirm]);
 
   return (
     <>
-      <Login
+      <Signup
         email={email}
-        setEmail={(email) => setEmail(email)}
         password={password}
-        handleLogin={handleLogin}
+        passwordConfirm={passwordConfirm}
+        handleSignup={handleSignup}
+        setEmail={(email) => setEmail(email)}
         setPassword={(password) => setPassword(password)}
+        setPasswordConfirm={(password) => setPasswordConfirm(password)}
       />
       {error && <Error error={error} />}
     </>
   );
 };
 
-export default LoginPage;
+export default SignupPage;
