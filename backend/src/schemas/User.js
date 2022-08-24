@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
   verificationToken: {
     type: String,
   },
+  passwordResetToken: {
+    type: String,
+  },
   email: {
     type: String,
     unique: true,
