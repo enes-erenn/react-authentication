@@ -60,7 +60,7 @@ export const updateUserInfo = {
       const { email, isVerified, info } = result;
 
       // Generating new token with new credentials
-      const token = jwt.sign(
+      const newToken = jwt.sign(
         { id, email, isVerified, info },
         process.env.JWT_SECRET,
         {
@@ -70,7 +70,7 @@ export const updateUserInfo = {
 
       // Sending new token with the new credentials
       res.status(200).send({
-        token,
+        token: newToken,
       });
 
       await db.disconnect();

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import PrivateRoute from "./auth/PrivateRoute";
+import RedirectRoute from "./auth/RedirectRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
@@ -25,12 +26,14 @@ const App = () => {
           </li>
         </ul>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route element={<RedirectRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+          </Route>
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<UserProfilePage />} />
           </Route>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </Router>
     </>
