@@ -50,10 +50,6 @@ export const signup = {
 
     // Sending response to the request
     res.status(200).send({
-      id: user._id,
-      createdAt: user.createdAt,
-      signedIn: user.signedIn,
-      email: user.email,
       token,
     });
 

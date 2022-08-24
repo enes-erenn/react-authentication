@@ -8,7 +8,7 @@ export const login = {
   method: "post",
   handler: async (req, res) => {
     // Getting data from the request
-    const { email, password } = req.body;
+    const { email, password, signedIn } = req.body;
 
     // Connecting the Database (This is a custom func, be aware of that it is not a built-in func of the packages)
     await db.connect();
@@ -27,11 +27,16 @@ export const login = {
 
     // If the password is correct then generate a token to allow user to use the application
     if (isCorrect) {
+      await User.findByIdAndUpdate(user._id, {
+        signedIn,
+      });
+
       const token = jwt.sign(
         {
           id: user._id,
           createdAt: user.createdAt,
-          signedIn: user.signedIn,
+          signedIn,
+          info: user.info,
           email: user.email,
         },
         process.env.JWT_SECRET,
@@ -40,10 +45,6 @@ export const login = {
 
       // Sending response to the request
       res.status(200).send({
-        id: user._id,
-        createdAt: user.createdAt,
-        signedIn: user.signedIn,
-        email: user.email,
         token,
       });
     }

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import useToken from "../hooks/auth/useToken";
 import Error from "../components/Error";
 import Login from "../components/Login/Login";
 
 const LoginPage = () => {
+  const [, setToken] = useToken();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -13,6 +18,16 @@ const LoginPage = () => {
     }
     e.preventDefault();
     try {
+      await axios
+        .post("http://localhost:8080/api/login", {
+          email,
+          password,
+          signedIn: new Date(),
+        })
+        .then((res) => {
+          setToken(res.data.token);
+          navigate("/");
+        });
     } catch (err) {
       console.log(err);
     }

@@ -4,6 +4,7 @@ import PrivateRoute from "./auth/PrivateRoute";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
+            <Link to="/profile">User Profile</Link>
+          </li>
+          <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
@@ -22,8 +26,9 @@ const App = () => {
         </ul>
         <Routes>
           <Route element={<PrivateRoute />}>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<UserProfilePage />} />
           </Route>
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>

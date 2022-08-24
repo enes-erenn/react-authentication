@@ -12,7 +12,6 @@ const useUser = () => {
 
     return getPayloadFromToken(token);
   });
-
   useEffect(() => {
     if (!token) {
       setUser(null);
