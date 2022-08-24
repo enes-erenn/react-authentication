@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import PrivateRoute from "./auth/PrivateRoute";
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 
@@ -20,7 +21,9 @@ const App = () => {
           </li>
         </ul>
         <Routes>
-          <Route exact path="/" element={<PrivateRoute />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
         </Routes>

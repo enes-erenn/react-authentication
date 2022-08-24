@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Error from "../components/Error";
 import Signup from "../components/Signup/Signup";
+import useToken from "../hooks/auth/useToken";
 
 const SignupPage = () => {
+  const [, setToken] = useToken();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -16,7 +21,18 @@ const SignupPage = () => {
       return setError("Passwords do not match.");
     }
     e.preventDefault();
+
     try {
+      await axios
+        .post("http://localhost:8080/api/signup", {
+          email,
+          password,
+          createdAt: new Date(),
+        })
+        .then((res) => {
+          setToken(res.data.token);
+          navigate("/");
+        });
     } catch (err) {
       console.log(err);
     }

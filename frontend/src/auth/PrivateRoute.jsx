@@ -1,12 +1,13 @@
 import React from "react";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import useUser from "../hooks/auth/useUser";
 
-const PrivateRoute = (props) => {
-  const user = null;
+const PrivateRoute = () => {
+  const user = useUser();
   if (!user) {
     return <Navigate to="/login" />;
   }
-  return <Route {...props} />;
+  return <Outlet />;
 };
 
 export default PrivateRoute;

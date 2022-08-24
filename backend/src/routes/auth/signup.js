@@ -27,7 +27,7 @@ export const signup = {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Sending user to the Database
-    const user = await new User({
+    const user = new User({
       email,
       password: hashedPassword,
       createdAt,
