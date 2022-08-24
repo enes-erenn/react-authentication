@@ -31,7 +31,7 @@ const SignupPage = () => {
         })
         .then((res) => {
           setToken(res.data.token);
-          navigate("/");
+          navigate("/verify");
         });
     } catch (err) {
       console.log(err);

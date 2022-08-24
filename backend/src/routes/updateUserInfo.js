@@ -9,6 +9,7 @@ export const updateUserInfo = {
   handler: async (req, res) => {
     // Getting authorization token from the header
     const { authorization } = req.headers;
+
     // Getting user id from the request params
     const { userId } = req.params;
 
@@ -38,7 +39,7 @@ export const updateUserInfo = {
         });
 
       // If the token is valid, then get the user id from the token
-      const { id } = decoded;
+      const { id, isVerified } = decoded;
 
       // If the id is which is comes from the token is not equal to the id which is comes from the request stop the func and return message
       if (id !== userId) {
@@ -46,6 +47,14 @@ export const updateUserInfo = {
           .status(403)
           .json({ message: "Not allowed to update that user's data" });
       }
+
+      if (!isVerified)
+        return res.status(403).json({
+          result: "not verified",
+          message:
+            "You need to verify your email before you can update your data.",
+        });
+
       await db.connect();
 
       // Setting infos to the database
@@ -57,7 +66,7 @@ export const updateUserInfo = {
         { returnOriginal: false }
       );
 
-      const { email, isVerified, info } = result;
+      const { email, info } = result;
 
       // Generating new token with new credentials
       const newToken = jwt.sign(

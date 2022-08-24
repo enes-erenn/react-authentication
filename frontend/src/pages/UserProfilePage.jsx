@@ -8,7 +8,7 @@ import NameInputs from "../components/UserProfile/NameInputs";
 
 const UserProfilePage = () => {
   const user = useUser();
-  const { id, info } = user;
+  const { id, isVerified, info } = user;
   const [token, setToken] = useToken();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(info?.firstName || "");
@@ -60,6 +60,7 @@ const UserProfilePage = () => {
       />
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleLogout}>Logout</button>
+      {!isVerified && <p>Please verify your email.</p>}
       {message && <Message message={message} />}
     </>
   );

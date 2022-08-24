@@ -2,6 +2,8 @@ import db from "../../db";
 import User from "../../schemas/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid";
+import { sendEmail } from "../../utils/sendEmail";
 
 export const signup = {
   path: "/api/signup",
@@ -26,15 +28,34 @@ export const signup = {
     // If there is no duplicate error, then hash the raw password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const verificationToken = uuidv4();
+
     // Sending user to the Database
     const user = new User({
       email,
       password: hashedPassword,
       createdAt,
       signedIn: createdAt,
+      verificationToken,
     });
 
     await user.save();
+
+    // Sending verification token to the email
+    try {
+      await sendEmail({
+        to: email,
+        from: "info@digicafes.com",
+        subject: "Please verify your email",
+        text: `
+        Thanks for signing up! To verify your email, click here:
+        http://localhost:3000/verify/${verificationToken}
+        `,
+      });
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
 
     // Generating jwt token to allow user to use the application
     const token = jwt.sign(
