@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
   passwordResetToken: {
     type: String,
   },
+  googleId: {
+    type: String,
+    unique: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -22,7 +26,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   isVerified: {
     type: Boolean,

@@ -38,6 +38,15 @@ const Login = (props) => {
       <button onClick={() => navigate("/forgot-password")}>
         Forgot your password?
       </button>
+      <button
+        disabled={!props.googleOAuthUrl}
+        onClick={() => {
+          /* Opens a new tab which includes google accounts */
+          window.location.href = props.googleOAuthUrl;
+        }}
+      >
+        Log in with Google
+      </button>
     </Container>
   );
 };
