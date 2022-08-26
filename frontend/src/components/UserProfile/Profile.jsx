@@ -149,9 +149,12 @@ const Profile = (props) => {
     e.preventDefault();
     try {
       props.setIsLoading(true);
-      await axios.post("http://localhost:8080/api/test-email", {
-        email: props.email,
-      });
+      await axios.post(
+        "https://app-react-authentication.herokuapp.com/api/test-email",
+        {
+          email: props.email,
+        }
+      );
       props.setIsLoading(false);
     } catch (err) {
       props.setIsLoading(false);

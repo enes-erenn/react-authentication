@@ -63,7 +63,9 @@ const ForgotPasswordPage = () => {
     try {
       setIsLoading(true);
       await axios
-        .put(`http://localhost:8080/api/forgot-password/${email}`)
+        .put(
+          `https://app-react-authentication.herokuapp.com/api/forgot-password/${email}`
+        )
         .then((res) => {
           setSuccess(true);
           setTimeout(() => {

@@ -66,7 +66,7 @@ const SignupPage = () => {
     try {
       setIsLoading(true);
       await axios
-        .post("http://localhost:8080/api/signup", {
+        .post("https://app-react-authentication.herokuapp.com/api/signup", {
           email,
           password,
           createdAt: new Date(),

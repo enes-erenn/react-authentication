@@ -63,7 +63,7 @@ const UserProfilePage = () => {
       setIsLoading(true);
       await axios
         .put(
-          `http://localhost:8080/api/users/${id}`,
+          `https://app-react-authentication.herokuapp.com/api/users/${id}`,
           {
             firstName,
             lastName,

@@ -76,7 +76,7 @@ const ResetPasswordPage = () => {
   const handleResetPassword = async () => {
     try {
       await axios.put(
-        `http://localhost:8080/api/users/reset-password/${passwordResetToken}`,
+        `https://app-react-authentication.herokuapp.com/api/users/reset-password/${passwordResetToken}`,
         {
           password,
         }

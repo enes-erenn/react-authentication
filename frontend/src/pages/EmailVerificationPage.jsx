@@ -15,7 +15,9 @@ const EmailVerificationPage = () => {
     const loadedVerification = async () => {
       try {
         await axios
-          .put("http://localhost:8080/api/verify", { verificationToken })
+          .put("https://app-react-authentication.herokuapp.com/api/verify", {
+            verificationToken,
+          })
           .then((res) => {
             setToken(res.data.token);
             setIsSuccess(true);

@@ -66,7 +66,7 @@ const LoginPage = () => {
     try {
       setIsLoading(true);
       await axios
-        .post("http://localhost:8080/api/login", {
+        .post("https://app-react-authentication.herokuapp.com/api/login", {
           email,
           password,
           signedIn: new Date(),
