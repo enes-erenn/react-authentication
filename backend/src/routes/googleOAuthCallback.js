@@ -24,6 +24,8 @@ module.exports.googleOAuthCallback = {
     );
 
     // Redirecets to the
-    res.redirect(`http://localhost:3000/login?token=${token}`);
+    res.redirect(
+      `https://react-authentication-nine.vercel.app/login?token=${token}`
+    );
   },
 };
