@@ -88,7 +88,7 @@ const LoginPage = () => {
     const loadOAuthUrl = async () => {
       try {
         const response = await axios.get(
-          "https://react-authentication-nine.vercel.app/auth/google/url"
+          "https://app-react-authentication.herokuapp.com/auth/google/url"
         );
         const { url } = response.data;
         setGoogleOAuthUrl(url);
