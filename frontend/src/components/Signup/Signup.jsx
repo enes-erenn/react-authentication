@@ -95,9 +95,9 @@ const Signup = (props) => {
 
   return (
     <Container>
-      <Header>Signup</Header>
+      <Header>Sign Up</Header>
       <Helper>
-        Already haven an account?
+        Already have an account?
         <Signin onClick={() => navigate("/login")}>Login</Signin>
       </Helper>
       <Box>
@@ -131,7 +131,7 @@ const Signup = (props) => {
         />
       </Box>
       {props.error && <Error error={props.error} />}
-      <SignupButton onClick={props.handleSignup}>Signup</SignupButton>
+      <SignupButton onClick={props.handleSignup}>Sign Up</SignupButton>
     </Container>
   );
 };

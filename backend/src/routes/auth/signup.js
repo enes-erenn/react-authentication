@@ -49,7 +49,7 @@ module.exports.signup = {
         subject: "Please verify your email",
         text: `
         Thanks for signing up! To verify your email, click here:
-        http://localhost:3000/verify/${verificationToken}
+        https://react-authentication-nine.vercel.app/verify/${verificationToken}
         `,
       });
     } catch (err) {

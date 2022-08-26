@@ -88,7 +88,7 @@ const LoginPage = () => {
     const loadOAuthUrl = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/auth/google/url"
+          "https://react-authentication-nine.vercel.app/auth/google/url"
         );
         const { url } = response.data;
         setGoogleOAuthUrl(url);

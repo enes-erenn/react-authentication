@@ -30,7 +30,7 @@ module.exports.forgotPassword = {
           subject: "Password Reset",
           text: `
                 To reset your password, click this link:
-                http://localhost:3000/reset-password/${passwordResetToken}
+                https://react-authentication-nine.vercel.app/reset-password/${passwordResetToken}
                 `,
         });
       } catch (err) {
