@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.h2`
-  color: tomato;
+const Container = styled.h4`
+  color: #bc4749;
   text-align: center;
 `;
 

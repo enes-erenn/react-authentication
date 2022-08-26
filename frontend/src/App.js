@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./auth/PrivateRoute";
 import RedirectRoute from "./auth/RedirectRoute";
+import NavBar from "./components/NavBar";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import HomePage from "./pages/HomePage";
@@ -9,35 +10,14 @@ import LoginPage from "./pages/LoginPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import SignupPage from "./pages/SignupPage";
 import UserProfilePage from "./pages/UserProfilePage";
-import VerifyPage from "./pages/VerifyPage";
 
 const App = () => {
   return (
     <>
       <Router>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">User Profile</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li>
-            <Link to="/verify">Verify</Link>
-          </li>
-          <li>
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </li>
-        </ul>
+        <NavBar />
+        <HomePage />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/verify" element={<VerifyPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route
             path="/reset-password/:passwordResetToken"

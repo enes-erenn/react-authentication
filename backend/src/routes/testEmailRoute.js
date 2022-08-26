@@ -6,11 +6,11 @@ export const testEmailRoute = {
   handler: async (req, res) => {
     try {
       await sendEmail({
-        to: "thenesern@gmail.com",
+        to: req.body.email,
         from: "info@digicafes.com",
         subject: "This is a test email",
         text: "If you're reading this, it's working!",
-        html: `<p>hello</p>`,
+        html: `<p>If you're reading this, it's working!</p>`,
       });
       res.sendStatus(200);
     } catch (err) {
