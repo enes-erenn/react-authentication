@@ -1,11 +1,11 @@
-import db from "../../db";
-import User from "../../schemas/User";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { v4 as uuidv4 } from "uuid";
-import { sendEmail } from "../../utils/sendEmail";
+const db = require("../../db");
+const User = require("../../schemas/User");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { v4 } = require("uuid");
+const { sendEmail } = require("../../utils/sendEmail");
 
-export const signup = {
+module.exports.signup = {
   path: "/api/signup",
   method: "post",
   handler: async (req, res) => {
@@ -28,7 +28,7 @@ export const signup = {
     // If there is no duplicate error, then hash the raw password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const verificationToken = uuidv4();
+    const verificationToken = v4();
 
     // Sending user to the Database
     const user = new User({

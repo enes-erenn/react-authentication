@@ -1,9 +1,9 @@
-import db from "../../db";
-import User from "../../schemas/User";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+const db = require("../../db");
+const User = require("../../schemas/User");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-export const login = {
+module.exports.login = {
   path: "/api/login",
   method: "post",
   handler: async (req, res) => {

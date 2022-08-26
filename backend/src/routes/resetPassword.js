@@ -1,8 +1,8 @@
-import db from "../db";
-import bcrypt from "bcrypt";
-import User from "../schemas/User";
+const db = require("../db");
+const bcrypt = require("bcrypt");
+const User = require("../schemas/User");
 
-export const resetPassword = {
+module.exports.resetPassword = {
   path: "/api/users/reset-password/:passwordResetToken",
   method: "put",
   handler: async (req, res) => {

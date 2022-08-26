@@ -1,8 +1,8 @@
-import { createGoogleUser } from "../utils/createGoogleUser";
-import { getGoogleUser } from "../utils/getGoogleUser";
-import jwt from "jsonwebtoken";
+const { createGoogleUser } = require("../utils/createGoogleUser");
+const { getGoogleUser } = require("../utils/getGoogleUser");
+const jwt = require("jsonwebtoken");
 
-export const googleOAuthCallback = {
+module.exports.googleOAuthCallback = {
   path: "/auth/google/callback",
   method: "get",
   handler: async (req, res) => {

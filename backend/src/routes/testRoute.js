@@ -1,4 +1,4 @@
-export const testRoute = {
+module.exports.testRoute = {
   path: "/api/test",
   method: "get",
   handler: (req, res) => {

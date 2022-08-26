@@ -1,6 +1,6 @@
-import { sendEmail } from "../utils/sendEmail";
+const { sendEmail } = require("../utils/sendEmail");
 
-export const testEmailRoute = {
+module.exports.testEmailRoute = {
   path: "/api/test-email",
   method: "post",
   handler: async (req, res) => {

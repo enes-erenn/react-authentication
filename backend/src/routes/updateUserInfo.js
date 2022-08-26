@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
-import User from "../schemas/User";
-import { ObjectId } from "mongodb";
-import db from "../db";
+const jwt = require("jsonwebtoken");
+const User = require("../schemas/User");
+const { ObjectId } = require("mongodb");
+const db = require("../db");
 
-export const updateUserInfo = {
+module.exports.updateUserInfo = {
   path: "/api/users/:userId",
   method: "put",
   handler: async (req, res) => {

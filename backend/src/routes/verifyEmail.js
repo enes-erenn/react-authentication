@@ -1,9 +1,9 @@
-import { ObjectId } from "mongodb";
-import jwt from "jsonwebtoken";
-import db from "../db";
-import User from "../schemas/User";
+const { ObjectId } = require("mongodb");
+const jwt = require("jsonwebtoken");
+const db = require("../db");
+const User = require("../schemas/User");
 
-export const verifyEmail = {
+module.exports.verifyEmail = {
   path: "/api/verify",
   method: "put",
   handler: async (req, res) => {

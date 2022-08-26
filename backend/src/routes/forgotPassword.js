@@ -1,9 +1,9 @@
-import db from "../db";
-import { v4 as uuidv4 } from "uuid";
-import User from "../schemas/User";
-import { sendEmail } from "../utils/sendEmail";
+const db = require("../db");
+const { v4 } = require("uuid");
+const User = require("../schemas/User");
+const { sendEmail } = require("../utils/sendEmail");
 
-export const forgotPassword = {
+module.exports.forgotPassword = {
   path: "/api/forgot-password/:email",
   method: "put",
   handler: async (req, res) => {
@@ -13,7 +13,7 @@ export const forgotPassword = {
     await db.connect();
 
     // Generate a unique token
-    const passwordResetToken = uuidv4();
+    const passwordResetToken = v4();
 
     // Send the token to the user database
     const user = await User.findOneAndUpdate(

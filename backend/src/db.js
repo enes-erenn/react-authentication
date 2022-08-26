@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const connection = {};
 
@@ -32,4 +32,4 @@ async function disconnect() {
 
 const db = { connect, disconnect };
 
-export default db;
+module.exports = db;
